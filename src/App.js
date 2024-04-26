@@ -1,8 +1,16 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Login, Register } from './pages'; // Make sure your Register component is properly imported
+
 function App() {
   return (
-    <div>
-      <h1>Hello Vista Play!</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        {/* Other routes can be defined here */}
+      </Routes>
+    </Router>
   );
 }
 
