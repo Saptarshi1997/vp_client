@@ -5,7 +5,7 @@ export function validateRegisterData(stateData) {
 
     const toasterWarn = (message) => {
         toast.warn(message, {
-            position: "top-right",
+            position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -26,6 +26,15 @@ export function validateRegisterData(stateData) {
         errorCount++;
     } else if (stateData.password == null || stateData.password == undefined || stateData.password.length == 0) {
         toasterWarn('Password is required!');
+        errorCount++;
+    } else if (stateData.password.length < 5) {
+        toasterWarn('Password should have minimum 5 characters!');
+        errorCount++;
+    } else if (stateData.confPassword == null || stateData.confPassword == undefined || stateData.confPassword.length == 0) {
+        toasterWarn('Confirm password is required!');
+        errorCount++;
+    } else if (stateData.password != stateData.confPassword) {
+        toasterWarn('Password and Confirm password should be same!');
         errorCount++;
     }
 
