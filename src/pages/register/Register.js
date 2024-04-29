@@ -102,39 +102,33 @@ class Register extends React.Component {
                 coverImage: this.state.coverImage
             };
 
-            try {
-                this.setState({ pageLoader: true });
-                let responseData = await axios.post('http://localhost:4000/api/v1/users/register', reqData);
-                console.log("responseDatatat", JSON.stringify(responseData));
+            this.setState({ pageLoader: true });
+            let responseData = await axios.post('http://localhost:4000/api/v1/users/register', reqData);
+            console.log("responseDatatat", JSON.stringify(responseData));
 
-                if (responseData.data && responseData.data.statusCode == 200) {
-                    this.props.navigate('/login');
-                    toast.success(responseData.data.message, {
-                        position: "top-center",
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    });
-                } else {
-                    toast.error(responseData.data.message, {
-                        position: "top-center",
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    });
-                }
-                this.setState({ pageLoader: false });
-            } catch (error) {
-                console.error("Error registering user:", error);
+            if (responseData.data && responseData.data.statusCode == 200) {
+                this.props.navigate('/login');
+                toast.success(responseData.data.message, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            } else {
+                toast.error(responseData.data.message, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             }
-        } else {
-            console.log("Validation failed.");
+            this.setState({ pageLoader: false });
         }
     }
 
@@ -213,7 +207,7 @@ class Register extends React.Component {
                                             Sign up
                                         </Button>
                                     </Form>
-                                    <p className='mt-3 d-flex justify-content-center col-lg-8'>Already Have an Account<span style={{ marginLeft: '10px' }}><NavLink to="/login">Sign in</NavLink></span></p>
+                                    <p className='mt-3 d-flex justify-content-center col-lg-8'>Already Have an Account?<span style={{ marginLeft: '10px' }}><NavLink to="/login">Login</NavLink></span></p>
                                 </div>
                                 <div className='right-data' style={{ width: "100%" }}>
                                     <div className="sign-img mt-5">

@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Login, Register } from './pages'; // Make sure your Register component is properly imported
+import { HomeFeed, Login, Register } from './pages'; // Make sure your Register component is properly imported
 
 function App() {
 
@@ -12,8 +12,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/register" element={<Register navigate={navigate} />} />
+        <Route path="/" element={<HomeFeed navigate={navigate} />} />
         <Route path="/login" element={<Login navigate={navigate} />} />
+        <Route path="/register" element={<Register navigate={navigate} />} />
         {/* Other routes can be defined here */}
       </Routes>
     </Router>

@@ -13,7 +13,7 @@ function NavBar({
                     <Navbar.Brand href="#home">{name && name.length > 0 ? name : "Default"}</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="#home">Feed</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
+                        <Nav.Link href="#features">Logout</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
