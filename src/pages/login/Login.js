@@ -58,6 +58,8 @@ class Login extends React.Component {
 
             if (responseData.data && responseData.data.statusCode == 200) {
                 localStorage.setItem('userInfo', responseData.data.response);
+                document.cookie = `accessToken=${responseData.data.response.accessToken}; path=/`;
+                axios.defaults.headers.common['Authorization'] = `Bearer ${responseData.data.response.accessToken}`;
                 this.props.navigate('/');
                 toast.success(responseData.data.message, {
                     position: "top-center",
